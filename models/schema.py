@@ -7,8 +7,8 @@ class ITEM(BaseModel):
     price: float
     discountedPrice: float
     isKilogram: bool
-    weightMeasure: str
-    weightProductPricePerUnit:int
+    weightMeasure: str|None
+    weightProductPricePerUnit:int|None
     isOnline: bool = True
     categoryId: int = None
 
