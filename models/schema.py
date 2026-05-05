@@ -9,6 +9,8 @@ class ITEM(BaseModel):
     isKilogram: bool
     weightMeasure: str
     weightProductPricePerUnit:int
+    isOnline: bool = True
+    categoryId: int = None
 
 
 class CATEGORY(BaseModel):
@@ -20,3 +22,7 @@ class CATEGORY(BaseModel):
 class API_CATEGORY(BaseModel):
     success: bool
     data: CATEGORY
+
+class API_ITEM(BaseModel):
+    success: bool
+    data: ITEM
