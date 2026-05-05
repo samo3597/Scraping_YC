@@ -4,7 +4,10 @@ from models import API_CATEGORY, API_ITEM
 
 
 class YC:
+    # TODO Ավելացնել ֆունկցիա get_item
+
     def __init__(self):
+        # TODO Փոփոխականները դնել .env-ի մեջ
         self.headers = {}
         self.url_category = ''
 
@@ -28,5 +31,6 @@ class YC:
             print("Հարցումը չեղարկվեց ժամանակի սպառման պատճառով (Timeout).")
         except RequestException as e:
             print(f"Տեղի է ունեցել սխալ հարցման ընթացքում: {e}")
+        # TODO Ավելացնել լոգավորում
 
         return None
