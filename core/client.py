@@ -11,6 +11,8 @@ class YC:
         load_dotenv()
 
         self.headers = {
+            'authorization': os.getenv('TOKEN'),
+            'cityid': os.getenv('CITYID'),
             'content-type': 'application/json',
             'accept': 'application/json'
         }
