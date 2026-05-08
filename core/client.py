@@ -1,16 +1,21 @@
+import os
 import requests
 from requests.exceptions import RequestException, Timeout
 from models import API_CATEGORY, API_ITEM
+from dotenv import load_dotenv
 
 
 class YC:
-    # TODO Ավելացնել ֆունկցիա get_item
 
     def __init__(self):
-        # TODO Փոփոխականները դնել .env-ի մեջ
-        self.headers = {}
-        self.url_category = ''
-        self.url_item = ''
+        load_dotenv()
+
+        self.headers = {
+            'content-type': 'application/json',
+            'accept': 'application/json'
+        }
+        self.url_category = os.getenv('URL_CATEGORY')
+        self.url_item = os.getenv('URL_ITEM')
 
 
     def get_by_category(self, category_id):
