@@ -10,6 +10,8 @@ class YC:
         # TODO Փոփոխականները դնել .env-ի մեջ
         self.headers = {}
         self.url_category = ''
+        self.url_item = ''
+
 
     def get_by_category(self, category_id):
         data_body = {
@@ -34,3 +36,22 @@ class YC:
         # TODO Ավելացնել լոգավորում
 
         return None
+
+    def get_item(self, item_id: int):
+        url = self.url_item + str(item_id)
+        try:
+            res = requests.get(url, headers=self.headers, timeout=(5, 15))
+            res.raise_for_status()
+
+            try:
+                return API_ITEM.model_validate(res.json())
+            except Exception as e:
+                print(f"Տվյալների վալիդացման սխալ: {e}")
+        except Timeout:
+            print("Հարցումը չեղարկվեց ժամանակի սպառման պատճառով (Timeout).")
+        except RequestException as e:
+            print(f"Տեղի է ունեցել սխալ հարցման ընթացքում: {e}")
+        # TODO Ավելացնել լոգավորում
+
+        return None
+
